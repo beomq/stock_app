@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:hive/hive.dart';
 import 'package:stock_app/util/color_schemes.dart';
 import 'package:stock_app/data/source/local/company_listing_entity.dart';
-import 'package:stock_app/presentation/main_screen.dart';
+import 'package:stock_app/presentation/company_info/main_screen.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
+  await Hive.initFlutter();
   Hive.registerAdapter(CompanyListingEntityAdapter());
   await dotenv.load();
   runApp(const MyApp());
