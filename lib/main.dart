@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive/hive.dart';
-import 'package:stock_app/color_schemes.dart';
+import 'package:stock_app/util/color_schemes.dart';
 import 'package:stock_app/data/source/local/company_listing_entity.dart';
 import 'package:stock_app/presentation/main_screen.dart';
 
