@@ -17,7 +17,7 @@ class StockDao {
   }
 
   // 검색
-  Future<List<CompanyListingEntity>> searchCompantListing(String query) async {
+  Future<List<CompanyListingEntity>> searchCompanyListing(String query) async {
     final List<CompanyListingEntity> companyListing = await box
         .get(StockDao.companyListing, defaultValue: <CompanyListingEntity>[]);
 
