@@ -10,7 +10,7 @@ class MainScreen extends StatelessWidget {
         title: const Text('aa'),
       ),
       bottomNavigationBar: NavigationBar(
-        destinations: [
+        destinations: const [
           NavigationDestination(icon: Icon(Icons.ice_skating), label: 'aa'),
           NavigationDestination(icon: Icon(Icons.ice_skating), label: 'aa'),
           NavigationDestination(icon: Icon(Icons.ice_skating), label: 'aa'),
