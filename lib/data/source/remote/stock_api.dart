@@ -28,4 +28,11 @@ class StockApi {
 
     return CompanyInfoDto.fromJson(jsonDecode(response.body));
   }
+
+  Future<http.Response> getIntradayInfo(
+      {required String symbol, String? apiKey}) async {
+    String usedApiKey = apiKey ?? this.apiKey ?? '';
+    return await _client.get(Uri.parse(
+        '$baseUrl/query?function=TIME_SERIES_INTRADAY&symbol=$symbol&interval=60min&apikey=$usedApiKey&datatype=csv'));
+  }
 }
