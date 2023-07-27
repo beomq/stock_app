@@ -24,7 +24,7 @@ class StockApi {
   }) async {
     String usedApiKey = apiKey ?? this.apiKey ?? '';
     final response = await _client.get(Uri.parse(
-        '$baseUrl/query?function=OVERVIEW&symbol=$symbol&apikey=$usedApiKey'));
+        'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=$usedApiKey&datatype=csv'));
 
     return CompanyInfoDto.fromJson(jsonDecode(response.body));
   }

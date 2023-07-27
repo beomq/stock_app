@@ -4,7 +4,7 @@ import 'package:stock_app/data/mapper/intraday_info_mapper.dart';
 import 'package:stock_app/data/source/remote/dto/intraday_info_dto.dart';
 import 'package:stock_app/domain/model/intraday_info.dart';
 
-class intradayInfoParser implements CsvParser<IntradayInfo> {
+class IntradayInfoParser implements CsvParser<IntradayInfo> {
   @override
   Future<List<IntradayInfo>> parse(String csvString) {
     List<List<dynamic>> csvValues =

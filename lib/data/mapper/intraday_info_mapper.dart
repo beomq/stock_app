@@ -4,10 +4,16 @@ import 'package:stock_app/domain/model/intraday_info.dart';
 
 extension ToIntradayInfo on IntradayInfoDto {
   IntradayInfo toIntradayInfo() {
-    final formmatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+    final formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+    DateTime? date;
+    try {
+      date = formatter.parse(timestamp);
+    } catch (e) {
+      date = DateTime.now();
+    }
     return IntradayInfo(
-      date: formmatter.parse(timestamp),
-      close: close,
+      date: date,
+      close: close ?? 0.0,
     );
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stock_app/domain/model/company_info.dart';
+import 'package:stock_app/presentation/company_info/company_info_state.dart';
 import 'package:stock_app/presentation/company_info/company_info_view_model.dart';
+import 'package:stock_app/presentation/company_info/widget/stock_chart.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
   const CompanyInfoScreen({Key? key}) : super(key: key);
@@ -23,14 +25,14 @@ class CompanyInfoScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               ),
             if (!state.isLoading && state.errorMessage == null)
-              _buildBody(state.companyInfo!),
+              _buildBody(state),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildBody(CompanyInfo companyInfo) {
+  Widget _buildBody(CompanyInfoState state) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Center(
@@ -38,7 +40,7 @@ class CompanyInfoScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              companyInfo.name,
+              state.companyInfo!.name,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -46,31 +48,47 @@ class CompanyInfoScreen extends StatelessWidget {
               ),
             ),
             Text(
-              companyInfo.symbol,
+              state.companyInfo!.symbol,
               style: const TextStyle(
                 fontStyle: FontStyle.italic,
               ),
             ),
             const Divider(),
             Text(
-              'Industry: ${companyInfo.industry}',
+              'Industry: ${state.companyInfo!.industry}',
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             Text(
-              'Contry: ${companyInfo.country}',
+              'Contry: ${state.companyInfo!.country}',
               style: const TextStyle(
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             const Divider(),
             Text(
-              companyInfo.description,
+              state.companyInfo!.description,
               style: const TextStyle(
                 fontSize: 12,
               ),
-            )
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Text(
+              'Market Summary',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            if (state.stockInfos.isNotEmpty)
+              StockChart(
+                infos: state.stockInfos,
+              ),
           ],
         ),
       ),

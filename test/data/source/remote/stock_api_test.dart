@@ -11,7 +11,7 @@ void main() {
 
     test('getListings returns a response', () async {
       final response = await StockApi().getListings();
-      final _parser = CompanyListingParser();
+      final _parser = CompanyListingsParser();
       final remoteListings = await _parser.parse(response.body);
       expect(remoteListings[0].symbol, 'A');
       expect(remoteListings[0].exchange, 'NYSE');

@@ -2,7 +2,7 @@ import 'package:csv/csv.dart';
 import 'package:stock_app/data/csv/csv_parser.dart';
 import 'package:stock_app/domain/model/company_listing.dart';
 
-class CompanyListingParser implements CsvParser {
+class CompanyListingsParser implements CsvParser {
   @override
   Future<List<CompanyListing>> parse(String csvString) async {
     List<List<dynamic>> csvValues =
